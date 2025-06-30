@@ -37,6 +37,11 @@ While the original scraper targets Amazon, it uses mock data for stable executio
 ---
 
 ## Project Architecture & ETL Workflow
+![Pipeline Diagram](images/pipeline_design.png)
+
+### DAG Preview
+![DAG Preview](images/dag.png)
+
 
 ### 1. Extract  
 The pipeline fetches book data from Amazon using a Python scraper (currently using mock data to simulate extraction). It collects key attributes such as book title, author, price, and rating.
@@ -53,11 +58,14 @@ As part of the project, I performed detailed data analysis using PostgreSQL to g
 
 - **Find Books Whose Rating Differs Significantly from Author Average (Outliers):**  
   Identified books whose ratings deviate substantially from the author’s average rating, helping spot outliers or inconsistencies.
+![Pipeline Diagram](images/author_avg.png)
 
 - **Price Distribution: Bucket Books into Price Ranges:**  
   Grouped books into price brackets to understand the pricing landscape and distribution.
+![Pipeline Diagram](images/distribution.png)
 
 - **Top 5 Highest Priced Books with Rating Above 4.5:**  
   Extracted premium books that are highly rated, useful for highlighting premium market offerings.
+![Pipeline Diagram](images/rating_value.png)
 
 These analyses utilized advanced SQL techniques such as window functions, aggregations, conditional grouping, and type casting to work with imperfect data formats.
